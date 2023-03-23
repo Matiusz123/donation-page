@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Profile</title>
+  </head>
+  <body>
+    <h1>User Profile</h1>
+    <p><strong>Name:</strong> {{ user.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Date joined:</strong> {{ user.date_joined }}</p>
+    {% for donation in donations %}
+        <h2><strong>Id dotacji = {{ donation.id }}</strong></h2>
+        <p><strong>Ilosc workow:</strong> {{ donation.quantity }}</p>
+        <p><strong>Dla organizacji:</strong> {{ donation.institution }}</p>
+        <p><strong>Kategoria:</strong> {{ donation.institution.get_type_display }}</p>
+        <p><strong>Data odbioru:</strong> {{ donation.pick_up_date }}</p>
+
+
+
+    {% endfor %}
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+  </body>
+</html>
