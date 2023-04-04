@@ -114,7 +114,8 @@
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
               {% for institution in institutions %}
-            <div class="form-group form-group--checkbox" data-categories={{ institution }}>
+            <div class="form-group form-group--checkbox" data-categories="{% for i_c in inst_cat %}{% if institution.id == i_c.Institution_id %}{{ i_c.category_id }},{% endif %}{% endfor %}">
+
                 <label>
                     <input type="radio" name="organization" value="old" />
                     <span class="checkbox radio"></span>
@@ -124,6 +125,7 @@
                     </span>
                 </label>
             </div>
+
 
 
             {% endfor %}
@@ -195,14 +197,13 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span class="summary--text"
-                      >4 worki ubrań w dobrym stanie dla dzieci</span
+                    <span class="summary--bags"></span
                     >
                   </li>
 
                   <li>
                     <span class="icon icon-hand"></span>
-                    <span class="summary--text"
+                    <span class="summary--fundation"
                       >Dla fundacji "Mam marzenie" w Warszawie</span
                     >
                   </li>

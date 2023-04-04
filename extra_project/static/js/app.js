@@ -255,28 +255,30 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// Get all the category checkboxes
+
 const categoryCheckboxes = document.querySelectorAll('[data-step="1"] input[type="checkbox"]');
+const categoryElements = document.querySelectorAll('.form-group--checkbox[data-categories]');
 
-// Get all the institutions
 
 
-// Add an event listener to each category checkbox
 categoryCheckboxes.forEach(function (checkbox) {
   checkbox.addEventListener('change', function () {
-    // Get the IDs of all the selected categories
     const selectedCategoryIds = [];
-
     categoryCheckboxes.forEach(function (checkbox) {
       if (checkbox.checked) {
         selectedCategoryIds.push(checkbox.value);
       }
     });
-    console.log(selectedCategoryIds)
+    categoryElements.forEach(function (categoryElement) {
+      const categoriesid = categoryElement.dataset.categories.split(',');
+      const shareElement = categoriesid.some(element => selectedCategoryIds.includes(element));
 
-
-    // Set the display property of the matching and non-matching institutions
-
-
+      if (shareElement) {
+        categoryElement.style.display = 'block';
+      } else {
+        categoryElement.style.display = 'none';
+      }
+    });
   });
 });
+
